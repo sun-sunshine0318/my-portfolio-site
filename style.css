@@ -1,0 +1,299 @@
+/* General Styles */
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color: #F8F5F2; /* Warm off-white */
+    color: #333333;
+}
+
+h1, h2, h5, .navbar-brand {
+    font-family: 'Noto Serif JP', serif;
+}
+
+h2 {
+    font-size: 2.8rem; /* Larger font size for section titles */
+    font-weight: 700;  /* Bolder font weight */
+}
+
+#portfolio h2 {
+    margin-top: 3rem;
+    margin-bottom: 5rem !important;
+}
+
+#contact h2 {
+    font-size: 2.2rem; /* Smaller font size for contact title */
+}
+
+/* Header */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.8) !important; /* Semi-transparent white */
+    backdrop-filter: blur(10px);
+}
+
+.navbar-brand, .nav-link {
+    color: #333333 !important;
+}
+
+.navbar-nav .nav-link {
+    border: 1px solid #D3C5B5; /* Lighter, earthy border */
+    border-radius: 30px; /* Pill shape */
+    padding: 8px 20px;
+    margin: 0 5px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: #8B7D6B; /* Earthy brown from before */
+    color: #FFFFFF !important; /* White text on hover */
+    border-color: #8B7D6B;
+}
+
+/* Hero Section */
+#hero {
+    height: 100vh;
+    background: url('./images/hero-section-background.png.png') no-repeat center center/cover;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    position: relative; /* For positioning the overlay */
+    animation: hero-bg-movement 30s infinite alternate; /* Apply animation */
+}
+
+@keyframes hero-bg-movement {
+    from { background-size: 100% 100%; }
+    to { background-size: 120% 120%; }
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
+    z-index: 1; /* Ensure overlay is above background image but below content */
+}
+
+#hero .container {
+    position: relative; /* Ensure content is above the overlay */
+    z-index: 2;
+}
+
+#hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    transition: transform 0.3s ease;
+}
+
+#hero p.lead {
+    transition: transform 0.3s ease;
+}
+
+#hero:hover h1,
+#hero:hover p.lead {
+    transform: scale(1.05);
+}
+
+/* Sections */
+section {
+    padding-top: 80px; /* Adjust for fixed navbar */
+    border-bottom: 1px solid #EAE0D5;
+}
+
+#about {
+    margin-top: 5rem;
+}
+
+#about p {
+    font-size: 1.3rem; /* Slightly larger font size */
+    line-height: 1.8;   /* Increase line spacing for readability */
+}
+
+#portfolio {
+    /* background-color: #FFFFFF; */
+    position: relative;
+    background-image: url('./images/pattern.png');
+    background-repeat: repeat;
+    background-size: 400px; /* この値を変更すると、パターンの大きさを調整できます */
+    padding-top: 50px !important;
+    padding-bottom: 300px !important;
+}
+
+#portfolio::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.6); /* White with 60% opacity (40% transparent) */
+    z-index: 1;
+}
+
+#portfolio .container {
+    position: relative;
+    z-index: 2;
+}
+
+.portfolio-item {
+    position: relative; /* Needed for overlay positioning */
+    overflow: hidden; /* Hide overflowing overlay */
+}
+
+.portfolio-img-container {
+    position: relative;
+    width: 100%;
+    height: 150px; /* Fixed height for consistency */
+    overflow: hidden; /* Hide overflowing parts of the image */
+    background-color: #F8F5F2; /* Match 'About me' section background */
+}
+
+.project-image-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #333333; /* Change text color for better visibility */
+    font-family: 'Noto Serif JP', serif; /* Same as Products title */
+    font-size: 2.2rem; /* Adjust as needed */
+    font-weight: 700;
+    text-shadow: none; /* Remove text shadow */
+    z-index: 1; /* Ensure it's above the image but below the overlay */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.portfolio-item:hover .project-image-title {
+    opacity: 0;
+}
+
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 2; /* Ensure overlay is above the title */
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    opacity: 1;
+}
+
+.overlay-content {
+    transform: translateY(20px);
+    transition: transform 0.4s ease;
+}
+
+.portfolio-item:hover .overlay-content {
+    transform: translateY(0);
+}
+
+.portfolio-overlay .card-title {
+    font-family: 'Noto Serif JP', serif; /* Same as Products title */
+    font-size: 1.8rem; /* Adjust as needed */
+    font-weight: 500;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: 1rem; /* Space between title and button */
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    opacity: 1;
+}
+
+.overlay-content {
+    transform: translateY(20px);
+    transition: transform 0.4s ease;
+}
+
+.portfolio-item:hover .overlay-content {
+    transform: translateY(0);
+}
+
+.btn-outline-light {
+    border-radius: 30px;
+    padding: 12px 25px;
+    border: 1px solid #D3C5B5; /* Lighter, earthy border for consistency */
+    color: #D3C5B5; /* Initial text color */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+}
+
+.btn-outline-light:hover {
+    background-color: #8B7D6B; /* Fill with earthy brown on hover */
+    color: #FFFFFF; /* White text on hover */
+    border-color: #8B7D6B; /* Match border color */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Subtle shadow on hover */
+}
+
+/* Cards */
+.card {
+    border: 0.5px solid #000;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+
+.card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #8B7D6B; /* Earthy brown */
+    border-color: #8B7D6B;
+    border-radius: 30px;
+    padding: 15px 30px; /* Increased vertical padding */
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #6a5f50;
+    border-color: #6a5f50;
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex; /* Make it a flex container */
+    justify-content: center; /* Center the icons horizontally */
+    align-items: center; /* Align items vertically */
+}
+
+.social-icons a {
+    color: #333333;
+    transition: color 0.3s ease;
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Vertically center items */
+    justify-content: center; /* Horizontally center items if needed */
+}
+
+.social-icons a img {
+    width: 28px; /* Adjust as needed */
+    height: 28px; /* Adjust as needed */
+    /* vertical-align: middle; */ /* No longer needed with flexbox */
+}
+
+.social-icons a:hover {
+    color: #8B7D6B !important; /* Earthy brown */
+}
+
+/* Footer */
+footer {
+    background-color: #333333 !important;
+    color: #F8F5F2;
+    border-top: 1px solid #444444;
+}

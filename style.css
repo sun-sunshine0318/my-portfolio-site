@@ -176,8 +176,8 @@ section {
     opacity: 0;
     transition: opacity 0.4s ease;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* Center the icons horizontally */
+    align-items: center; /* Align items vertically */
     text-align: center;
     z-index: 2; /* Ensure overlay is above the title */
 }
@@ -227,8 +227,7 @@ section {
 .btn-outline-light:hover {
     background-color: #8B7D6B; /* Fill with earthy brown on hover */
     color: #FFFFFF; /* White text on hover */
-    border-color: #8B7D6B; /* Match border color */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Subtle shadow on hover */
+    border-color: #8B7D6B;
 }
 
 /* Cards */
@@ -295,12 +294,6 @@ section {
     justify-content: center; /* Horizontally center items if needed */
 }
 
-.social-icons a img {
-    width: 28px; /* Adjust as needed */
-    height: 28px; /* Adjust as needed */
-    /* vertical-align: middle; */ /* No longer needed with flexbox */
-}
-
 .social-icons a:hover {
     color: #8B7D6B !important; /* Earthy brown */
 }
@@ -310,4 +303,50 @@ footer {
     background-color: #333333 !important;
     color: #F8F5F2;
     border-top: 1px solid #444444;
+}
+
+#portfolio::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.6); /* White with 60% opacity (40% transparent) */
+    z-index: 1;
+}
+
+.card.card-carculator {
+    background-image: url('./images/app1.png');
+    background-size: cover;
+    background-position: center;
+    position: relative; /* Needed for ::before positioning */
+    overflow: hidden; /* Ensures ::before doesn't overflow rounded corners */
+}
+
+.card.card-carculator::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Black with 40% opacity */
+    z-index: 0; /* Place behind content */
+    border-radius: 15px; /* Match card border-radius */
+}
+
+.card.card-carculator .card-body {
+    position: relative; /* Ensure content is above the overlay */
+    z-index: 1; /* Place above ::before overlay */
+    background-color: transparent; /* Make card-body background transparent */
+}
+
+.card.card-carculator .card-body h5,
+.card.card-carculator .card-body p {
+    color: white; /* Ensure text is visible */
+}
+
+.card.card-carculator .card-body .btn-primary {
+    color: white; /* Ensure button text is visible */
 }
